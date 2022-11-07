@@ -7,17 +7,26 @@ import java.sql.SQLException;
 
 public class AccesoDatos {
 	 
-	private String  maquina     = "localhost";
-	private String  usuario     = "root";
-	private String  clave       = "Santi!";
-	private int puerto          = 3306;
-	private String bd			= "Ajedrez";
-	private String  servidor    = "";
-	private Connection conexion = null;
+	private String  maquina;
+	private String  usuario;
+	private String  clave;
+	private int puerto;
+	private String bd;
+	private String  servidor;
+	private Connection conexion;
 	 
 	    //
-	public AccesoDatos(){
+	public AccesoDatos(String maquina, String usuario, String clave, int puerto, String bd, String servidor, Connection conexion){
 		
+		this.maquina= maquina;
+		this.usuario= usuario;
+		this.clave=clave;
+		this.puerto=puerto;
+		this.bd=bd;
+		this.servidor=servidor;
+		this.conexion= conexion;
+		
+
 		this.servidor="jdbc:mysql://"+this.maquina+":"+ this.puerto+"/"+this.bd;
 	 
 	        //Carga el driver mysql en memoria

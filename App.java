@@ -120,7 +120,7 @@ public class App {
 
 		try {
 			// Instancio un objeto de acceso a datos
-			accesoBD = new AccesoDatos();
+			accesoBD = new AccesoDatos("localhost","root", "Santi!", 3306, "Ajedrez", "", null);
 			// Obtener la conexion para poder generar la sentencia de consulta
 			con = accesoBD.getConexion();
 
