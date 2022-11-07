@@ -9,7 +9,7 @@ public class AccesoDatos {
 	 
 	private String  maquina     = "localhost";
 	private String  usuario     = "root";
-	private String  clave       = "root";
+	private String  clave       = "Santi!";
 	private int puerto          = 3306;
 	private String bd			= "Ajedrez";
 	private String  servidor    = "";
@@ -42,7 +42,7 @@ public class AccesoDatos {
 	            error.printStackTrace();
 	            System.exit(0); //parar la ejecuci�n
 	        }
-	        System.out.println("Conectado a ajedrez");
+	        //System.out.println("Conectado a ajedrez");
 	    }
 	 
 	    //Devuelve el objeto Connection que se usar� en la clase Controlador

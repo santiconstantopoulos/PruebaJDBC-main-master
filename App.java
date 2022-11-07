@@ -88,12 +88,12 @@ public class App {
 				if (color == "Negro") {
 					for (int i = 0; i < 8; i++) {
 						pieza = new Peon("Peon", "Ladinos", "Agresores", color, generarPosicion(i, 2));
-						almacenarPieza(pieza,6);
+						almacenarPieza(pieza, 6);
 					}
 				} else {
 					for (int i = 0; i < 8; i++) {
 						pieza = new Peon("Peon", "Ladinos", "Agresores", color, generarPosicion(i, 7));
-						almacenarPieza(pieza,6);
+						almacenarPieza(pieza, 6);
 
 					}
 				}
@@ -124,22 +124,24 @@ public class App {
 			// Obtener la conexion para poder generar la sentencia de consulta
 			con = accesoBD.getConexion();
 
+			// (`idPieza`,`Descripcion`,`Color_idColor`,`TipoPieza_idTipoPieza`,`Tamaño_idTamaño`,`Material_idMaterial`)
+			// VALUES
+
 			String insertScript = "INSERT INTO pieza"
-					+ "(Descripcion, Posicion, idMaterial, idColor, idTamanio, idTipoPieza )"
-					+ " VALUES(?,?,?,?,?,?)";
+					+ "(Descripcion, Material_idMaterial, Color_idColor, Tamaño_idTamaño, TipoPieza_idTipoPieza )"
+					+ " VALUES(?,?,?,?,?)";
 			sentencia = con.prepareStatement(insertScript);
 
 			sentencia.setString(1, mipieza.getNombrePieza() + " " + mipieza.getCapacidadDesplazamiento() + " y "
 					+ mipieza.getConducta());
-			sentencia.setString(2, mipieza.getPosicion());
-			sentencia.setInt(3, 1);
-			sentencia.setString(4, mipieza.getColor()); // negro 2 blanco 1
-			sentencia.setInt(5, 1);
-			sentencia.setInt(6, idTipoPieza);
+			sentencia.setInt(2, 1);
+			sentencia.setString(3, mipieza.getColor()); // negro 2 blanco 1
+			sentencia.setInt(4, 1);
+			sentencia.setInt(5, idTipoPieza);
 
 			// execute insert SQL statement
 			sentencia.executeUpdate();
-			
+
 		} catch (SQLException error) {
 			System.err.println("Error al insertar la pieza.");
 			error.printStackTrace();
@@ -159,46 +161,44 @@ public class App {
 	}
 
 	public static void main(String[] args) throws Exception {
-	
-		/* REFERENCIA DE IDTIPOPIEZA
-		# idTipoPieza	Descripciondepieza
-					1	Reina
-					2	Rey
-					3	Torre
-					4	Alfil
-					5	Caballo
-					6	Peon
-	*/
+
+		/*
+		 * REFERENCIA DE IDTIPOPIEZA
+		 * # idTipoPieza Descripciondepieza
+		 * 1 Reina
+		 * 2 Rey
+		 * 3 Torre
+		 * 4 Alfil
+		 * 5 Caballo
+		 * 6 Peon
+		 */
 		System.out.println("Bienvenido al Programa de Ajedrez.");
 		crearTablero();
-		// ESTOY HARCODEANDO EL ID TIPO DE PIEZA HASTA TANTO HAYA UNA LOGICA DE MAPEO O METODO QUE DEVUELVA EL VALOR NUMERICO
-		almacenarPieza(procesarPieza("Rey", "Negro"),2);
-		almacenarPieza(procesarPieza("Rey", "Blanco"),2);
+		// ESTOY HARCODEANDO EL ID TIPO DE PIEZA HASTA TANTO HAYA UNA LOGICA DE MAPEO O
+		// METODO QUE DEVUELVA EL VALOR NUMERICO
+		almacenarPieza(procesarPieza("Rey", "Negro"), 2);
+		almacenarPieza(procesarPieza("Rey", "Blanco"), 2);
 
-		almacenarPieza(procesarPieza("Reina", "Negro"),1);
-		almacenarPieza(procesarPieza("Reina", "Blanco"),1);
+		almacenarPieza(procesarPieza("Reina", "Negro"), 1);
+		almacenarPieza(procesarPieza("Reina", "Blanco"), 1);
 
-		almacenarPieza(procesarPieza("Alfil", "Negro"),4);
-		almacenarPieza(procesarPieza("Alfil", "Negro"),4);
-		almacenarPieza(procesarPieza("Alfil", "Blanco"),4);
-		almacenarPieza(procesarPieza("Alfil", "Blanco"),4);
+		almacenarPieza(procesarPieza("Alfil", "Negro"), 4);
+		almacenarPieza(procesarPieza("Alfil", "Negro"), 4);
+		almacenarPieza(procesarPieza("Alfil", "Blanco"), 4);
+		almacenarPieza(procesarPieza("Alfil", "Blanco"), 4);
 
-		almacenarPieza(procesarPieza("Caballo", "Negro"),5);
-		almacenarPieza(procesarPieza("Caballo", "Negro"),5);
-		almacenarPieza(procesarPieza("Caballo", "Blanco"),5);
-		almacenarPieza(procesarPieza("Caballo", "Blanco"),5);
+		almacenarPieza(procesarPieza("Caballo", "Negro"), 5);
+		almacenarPieza(procesarPieza("Caballo", "Negro"), 5);
+		almacenarPieza(procesarPieza("Caballo", "Blanco"), 5);
+		almacenarPieza(procesarPieza("Caballo", "Blanco"), 5);
 
-		almacenarPieza(procesarPieza("Torre", "Negro"),3);
-		almacenarPieza(procesarPieza("Torre", "Negro"),3);
-		almacenarPieza(procesarPieza("Torre", "Blanco"),3);
-		almacenarPieza(procesarPieza("Torre", "Blanco"),3);
+		almacenarPieza(procesarPieza("Torre", "Negro"), 3);
+		almacenarPieza(procesarPieza("Torre", "Negro"), 3);
+		almacenarPieza(procesarPieza("Torre", "Blanco"), 3);
+		almacenarPieza(procesarPieza("Torre", "Blanco"), 3);
 
-		for (int i = 0; i < 8; i++) {
-			procesarPieza("Peon", "Negro");
-		}
-		for (int i = 0; i < 8; i++) {
-			procesarPieza("Peon", "Blanco");
-		}
-
+		procesarPieza("Peon", "Negro");
+		procesarPieza("Peon", "Blanco");
 	}
+
 }
