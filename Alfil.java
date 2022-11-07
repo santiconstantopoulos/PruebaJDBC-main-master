@@ -10,7 +10,6 @@ public class Alfil extends Pieza {
 
     @Override
     public void mover() {
-
     }
 
 }

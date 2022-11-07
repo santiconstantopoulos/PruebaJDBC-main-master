@@ -2,9 +2,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
-
-
 public class AccesoDatos {
 	 
 	private String  maquina;
@@ -14,8 +11,7 @@ public class AccesoDatos {
 	private String bd;
 	private String  servidor;
 	private Connection conexion;
-	 
-	    //
+	
 	public AccesoDatos(String maquina, String usuario, String clave, int puerto, String bd, String servidor, Connection conexion){
 		
 		this.maquina= maquina;
@@ -25,8 +21,6 @@ public class AccesoDatos {
 		this.bd=bd;
 		this.servidor=servidor;
 		this.conexion= conexion;
-		
-
 		this.servidor="jdbc:mysql://"+this.maquina+":"+ this.puerto+"/"+this.bd;
 	 
 	        //Carga el driver mysql en memoria
@@ -53,7 +47,6 @@ public class AccesoDatos {
 	        }
 	        //System.out.println("Conectado a ajedrez");
 	    }
-	 
 	    //Devuelve el objeto Connection que se usar� en la clase Controlador
 	    public  Connection getConexion() {
 	        return conexion;

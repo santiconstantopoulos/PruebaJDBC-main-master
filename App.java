@@ -107,9 +107,7 @@ public class App {
 	}
 
 	public static void crearTablero() {
-		Tablero nuevoTablero = null;
-		// Se devuelven las posiciones del tablero
-		nuevoTablero = new Tablero();
+		new Tablero();
 	}
 
 	public static void almacenarPieza(Pieza mipieza, int idTipoPieza) {
